@@ -1,0 +1,31 @@
+.nav-footer-bg {
+    background-color: rgba(225, 230, 230, 0.762);
+}
+
+:root {
+    --offcanvas-width: 88px;
+    --topNavbarHeight: 55px;
+}
+.sidebar-nav {
+    width: var(--offcanvas-width);
+}
+
+@media (min-width: 990px) {
+    body {
+        overflow: auto !important;
+    }
+    main {
+        margin-left: var(--offcanvas-width);
+    }
+    /* this is to remove the backdrop */
+    .offcanvas-backdrop::before {
+        display: none;
+    }
+    .sidebar-nav {
+        -webkit-transform: none;
+        transform: none;
+        visibility: visible !important;
+        height: calc(100% - var(--topNavbarHeight));
+        top: var(--topNavbarHeight);
+    }
+}
