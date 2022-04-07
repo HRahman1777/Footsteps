@@ -5,7 +5,7 @@ Web-tools: `php` `laravel` `mysql` `bootstrap` `javascript`
 
 <hr>
 
-## Click Here For [Demo Video]()
+## Click Here For [Demo Video](https://youtu.be/mWxNVXLrM28)
 
 ## Features
 
@@ -31,11 +31,11 @@ To use this in any machine there should need to
 -   Then download [ZIP](https://github.com/HRahman1777/Footsteps/archive/refs/heads/main.zip)
     OR,
     Run this command to clone `git clone https://github.com/HRahman1777/Footsteps.git` with [Git-Bash](https://git-scm.com/downloads)
--   Create a .env file and copy-paste all text from env.example file.
+-   Create a .env file and copy-paste all text from env.example file. (or edit as suitable)
 -   Create a database name with `footsteps`
 -   Open command terminal on that folder run
 -   `composer install`
 -   `yarn install` or `npm install`
 -   `yarn run dev` or `npm run dev`
--   `php artisan migrate` or `php artisan migrate:fresh` (that will drop all table from footsteps db then migration)
+-   `php artisan migrate` or `php artisan migrate:fresh` (that will drop all table from footsteps db then do migration auto)
 -   At last `php artisan serve`
