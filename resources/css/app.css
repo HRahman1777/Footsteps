@@ -29,3 +29,11 @@
         top: var(--topNavbarHeight);
     }
 }
+
+.catLink {
+    height: 30px;
+    background-color: rgba(233, 242, 250, 0.682);
+}
+.catLink:hover {
+    background-color: rgba(189, 217, 242, 0.91);
+}

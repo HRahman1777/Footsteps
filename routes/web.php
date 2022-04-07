@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Post\CategoryController;
+use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,8 +18,14 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::post('/posted', [PostController::class, 'savePost'])->name('posted');
+Route::post('/home', [PostController::class, 'savePost'])->name('posted');
 Route::get('/explore', [PostController::class, 'allPost'])->name('all.post');
+Route::get('/explore/{id}', [PostController::class, 'singlePost']);
+
+Route::post('/explore/{id}', [CommentController::class, 'addComment']);
+//Route::post('/explore/{id}', [CommentController::class, 'deleteComment']);
+
+Route::get('/explore/{pid}/{cid}/delete', [CommentController::class, 'deleteComment']);
 
 Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin.home');
 Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category');

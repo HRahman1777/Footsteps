@@ -40,7 +40,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <textarea name="description" id="body" class="form-control @error('body') is-invalid @enderror" name="body"
+                                    <textarea name="description" id="body" class="form-control @error('body') is-invalid @enderror"
                                         value="{{ old('body') }}" autocomplete="body" autofocus
                                         style="height: 240px"></textarea>
                                     <label for="body" class="form-label">{{ __('Description') }}</label>
@@ -76,7 +76,8 @@
                                 {{ $post->updated_at }}
                             </p>
                             <div class="gap-2 d-flex">
-                                <a href="" class="">{{ $post->category->name }}</a> -
+                                <a href="/explore?catId={{ $post->category->id }}"
+                                    class="catLink border p-1 rounded">{{ $post->category->name }}</a> -
                                 @foreach ($post->tags as $tag)
                                     <p class="border p-1 rounded">#{{ $tag->name }}</p>
                                 @endforeach
@@ -102,7 +103,8 @@
                                 class="mt-1 rounded float-start img-fluid mb-2"
                                 style="max-height: {{ $new_height }}rem; max-width: {{ $new_width }}rem" alt="">
                         @endif
-                        <a class="btn btn-outline-secondary btn-sm" href=""><b>View / Comment</b></a>
+                        <a class="btn btn-outline-secondary btn-sm w-50" href="/explore/{{ $post->id }}"><b>View /
+                                Comment</b></a>
                     </div>
                 @endforeach
                 <a class="btn btn-outline-dark mt-4" href="{{ route('all.post') }}">

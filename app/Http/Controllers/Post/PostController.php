@@ -16,6 +16,19 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
+    public function singlePost($id)
+    {
+        $post = Post::where('id', $id);
+        if ($post) {
+            return view('posts.single-post', [
+                'post' => $post->first()
+            ]);
+        }
+        return view('posts.single-post', [
+            'post' => null
+        ]);
+    }
+
     public function allPost(Request $request)
     {
         if ($request->catId || $request->sKey) {
