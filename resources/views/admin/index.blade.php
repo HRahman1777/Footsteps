@@ -13,7 +13,8 @@
                         <a type="button" href="" class="btn btn-outline-dark btn-lg px-4 me-sm-3 fw-bold">User</a>
                         <a type="button" href="{{ route('admin.category') }}"
                             class="btn btn-outline-dark btn-lg px-4 me-sm-3 fw-bold">Category</a>
-                        <a type="button" href="" class="btn btn-outline-dark btn-lg px-4 me-sm-3 fw-bold">Tag</a>
+                        <a type="button" href="{{ route('admin.tag') }}"
+                            class="btn btn-outline-dark btn-lg px-4 me-sm-3 fw-bold">Tag</a>
                     </div>
                 </div>
             </div>

@@ -42,11 +42,24 @@ class CategoryController extends Controller
     }
 
     public function edit(Request $request, $id)
-    { ////////////////////////////////////////////////////// NOT YET COMPLETE
-        $category = Category::find($id)->get();
-        $category->name  = $request->name;
-        $category->save();
-        return redirect('admin/category')->with('success', 'Category Updated Successfully!');
+    {
+        $jervis = [];
+        $category = Category::find($id);
+        if ($category) {
+            $category->update([
+                'name' => $request->input('name')
+            ]);
+            $jervis = [
+                'status' => 'success',
+                'message' => 'Category Updated Successfully!'
+            ];
+            return redirect('admin/category')->with('jervis', $jervis);
+        }
+        $jervis = [
+            'status' => 'error',
+            'message' => 'Category Could not Updated!'
+        ];
+        return redirect('admin/category')->with('jervis', $jervis);
     }
 
 
