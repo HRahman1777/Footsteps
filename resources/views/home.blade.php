@@ -75,6 +75,7 @@
                                 @<i>{{ $post->user->username }}</i> -
                                 {{ $post->updated_at }}
                             </p>
+                            <h5><b>{{ $post->title }}</b></h5>
                             <div class="gap-2 d-flex">
                                 <a href="/explore?catId={{ $post->category->id }}"
                                     class="catLink border p-1 rounded">{{ $post->category->name }}</a> -
