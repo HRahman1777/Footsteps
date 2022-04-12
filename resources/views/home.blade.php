@@ -87,22 +87,27 @@
                         <p>{{ $post->body }}</p>
                         @if ($post->image != null)
                             <?php
-                            $imageInfo = getimagesize('upload/images/' . $post->image);
-                            $width = $imageInfo[0];
-                            $height = $imageInfo[1];
-                            if ($height > $width) {
-                                $ratio = $height / $width;
-                                $new_height = 25;
-                                $new_width = round(25 / $ratio);
-                            } else {
-                                $ratio = $width / $height;
-                                $new_width = 25;
-                                $new_height = round(25 / $ratio);
-                            }
-                            ?>
+                            if (file_exists('upload/images/' . $post->image)) {
+                                $imageInfo = getimagesize('upload/images/' . $post->image);
+                                $width = $imageInfo[0];
+                                $height = $imageInfo[1];
+                                if ($height > $width) {
+                                    $ratio = $height / $width;
+                                    $new_height = 25;
+                                    $new_width = round(25 / $ratio);
+                                } else {
+                                    $ratio = $width / $height;
+                                    $new_width = 25;
+                                    $new_height = round(25 / $ratio);
+                                }?>
                             <img src="{{ asset('upload/images/' . $post->image) }}"
                                 class="mt-1 rounded float-start img-fluid mb-2"
                                 style="max-height: {{ $new_height }}rem; max-width: {{ $new_width }}rem" alt="">
+                            <?php 
+                            } else {
+                                echo "Heroku don't store image for permanent";
+                            }
+                            ?>
                         @endif
                         <a class="btn btn-outline-secondary btn-sm w-50" href="/explore/{{ $post->id }}"><b>View /
                                 Comment</b></a>
