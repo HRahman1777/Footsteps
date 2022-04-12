@@ -11,6 +11,8 @@
                     <h1>Welcome to ADMIN control</h1>
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                         <a type="button" href="" class="btn btn-outline-dark btn-lg px-4 me-sm-3 fw-bold">User</a>
+                        <a type="button" href="{{ route('admin.post') }}"
+                            class="btn btn-outline-dark btn-lg px-4 me-sm-3 fw-bold">Post</a>
                         <a type="button" href="{{ route('admin.category') }}"
                             class="btn btn-outline-dark btn-lg px-4 me-sm-3 fw-bold">Category</a>
                         <a type="button" href="{{ route('admin.tag') }}"

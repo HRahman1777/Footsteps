@@ -37,3 +37,10 @@
     background-color: rgba(189, 217, 242, 0.91);
 }
 
+.short-text-admin {
+    white-space: nowrap;
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

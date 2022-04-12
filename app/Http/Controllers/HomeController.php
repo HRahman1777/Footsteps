@@ -33,4 +33,33 @@ class HomeController extends Controller
     {
         return view('admin.index');
     }
+
+    public function allPost()
+    {
+        $posts = Post::all();
+        return view('admin.post', [
+            'posts' => $posts,
+        ]);
+    }
+
+    public function postDelete($id)
+    {
+        $jervis = [];
+        $post = Post::find($id);
+        if ($post) {
+            $isDelete = $post->delete();
+            if ($isDelete) {
+                $jervis = [
+                    'status' => 'success',
+                    'message' => 'Post Deleted Successfully!'
+                ];
+                return redirect('admin/post')->with('jervis', $jervis);;
+            }
+        }
+        $jervis = [
+            'status' => 'error',
+            'message' => 'Could not Delete!'
+        ];
+        return redirect('admin/post')->with('jervis', $jervis);
+    }
 }
