@@ -4,7 +4,7 @@
     <div class="container mt-3">
         <div class="text-secondary px-4 py-5 text-center shadow" style="background: #65b1fdf2">
             <div class="py-3">
-                <h3 class="display-5 fw-bold text-white">Category Controll</h3>
+                <h3 class="display-5 fw-bold text-white">Category Control</h3>
                 <a href="{{ route('admin.home') }}" class="btn btn-sm btn-outline-dark">Admin Home</a>
             </div>
         </div>
