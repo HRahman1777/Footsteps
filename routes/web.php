@@ -28,20 +28,19 @@ Route::get('/explore/{pid}/{cid}/delete', [CommentController::class, 'deleteComm
 
 
 /// ======>>> ADMIN <<<====== 
-Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin.home');
-
-// post
-Route::get('/admin/post', [HomeController::class, 'allPost'])->name('admin.post');
-Route::get('/admin/post/{id}/delete', [HomeController::class, 'postDelete']);
-
-// category
-Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category');
-Route::post('/admin/category/add', [CategoryController::class, 'save'])->name('add.category');
-Route::post('/admin/category/{id}/edit', [CategoryController::class, 'edit']);
-Route::get('/admin/category/{id}/delete', [CategoryController::class, 'delete']);
-
-// tag
-Route::get('/admin/tag', [TagController::class, 'index'])->name('admin.tag');
-Route::post('/admin/tag/add', [TagController::class, 'save'])->name('add.tag');
-Route::post('/admin/tag/{id}/edit', [TagController::class, 'edit']);
-Route::get('/admin/tag/{id}/delete', [TagController::class, 'delete']);
+Route::middleware('auth_admin')->group(function () {
+    Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin.home');
+    // post
+    Route::get('/admin/post', [HomeController::class, 'allPost'])->name('admin.post');
+    Route::get('/admin/post/{id}/delete', [HomeController::class, 'postDelete']);
+    // category
+    Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category');
+    Route::post('/admin/category/add', [CategoryController::class, 'save'])->name('add.category');
+    Route::post('/admin/category/{id}/edit', [CategoryController::class, 'edit']);
+    Route::get('/admin/category/{id}/delete', [CategoryController::class, 'delete']);
+    // tag
+    Route::get('/admin/tag', [TagController::class, 'index'])->name('admin.tag');
+    Route::post('/admin/tag/add', [TagController::class, 'save'])->name('add.tag');
+    Route::post('/admin/tag/{id}/edit', [TagController::class, 'edit']);
+    Route::get('/admin/tag/{id}/delete', [TagController::class, 'delete']);
+});
