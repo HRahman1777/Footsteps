@@ -150,7 +150,7 @@
 
         <!-- footer -->
         <footer
-            class="px-4 pt-4 text-center nav-footer-bg {{ Request::is('/') || Request::is('login') || Request::is('register') ? 'fixed-bottom' : '' }}">
+            class="px-4 pt-4 text-center nav-footer-bg {{ Request::is('/') || Request::is('login') || Request::is('register') || Request::is('about')? 'fix-footer-specific': '' }}">
             <div class="container">
                 <h3>Footsteps | Lets Grow Together</h3>
                 <hr />

@@ -30,6 +30,14 @@
     }
 }
 
+@media (min-height: 640px) {
+    .fix-footer-specific {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+    }
+}
+
 .catLink {
     height: 30px;
     background-color: rgba(233, 242, 250, 0.682);
