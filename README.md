@@ -5,15 +5,16 @@ Web-tools: `php` `laravel` `mysql` `bootstrap` `javascript`
 
 <hr>
 
-## Click Here For [Demo Video](https://youtu.be/mWxNVXLrM28)
-
+### Click Here For [Live Server](https://footsteps-hrahman1777.herokuapp.com)
+### Click Here For [Demo Video](https://youtu.be/mWxNVXLrM28)
+<hr>
 ## Features
 
 -   Sign up, Sign in - auth
 -   Post with category and tag
 -   Search section
 -   Comment section
--   Multiple role - auth control section (updating)
+-   Multiple role - auth control section
 
 ### Target to cover
 
