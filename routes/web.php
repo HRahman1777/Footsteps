@@ -24,6 +24,7 @@ Route::get('/explore', [PostController::class, 'allPost'])->name('all.post');
 Route::get('/explore/{id}', [PostController::class, 'singlePost']);
 
 Route::post('/explore/{id}', [CommentController::class, 'addComment']);
+Route::post('/explore/{pid}/{cid}/edit', [CommentController::class, 'edit']);
 Route::get('/explore/{pid}/{cid}/delete', [CommentController::class, 'deleteComment']);
 
 

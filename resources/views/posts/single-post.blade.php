@@ -38,9 +38,8 @@
                     <form action="/explore/{{ $post->id }}" method="post">
                         @csrf
                         <div class="form-floating mb-3">
-                            <textarea name="comment" id="comment" class="form-control @error('comment') is-invalid @enderror"
-                                value="{{ old('comment') }}" required autocomplete="comment" autofocus
-                                style="height: 80px"></textarea>
+                            <textarea name="comment" id="comment" class="form-control @error('comment') is-invalid @enderror" required
+                                autocomplete="comment" autofocus style="height: 80px">{{ old('comment') }}</textarea>
                             <label for="comment" class="form-label">{{ __('Comment') }}</label>
                         </div>
                         <button type="submit" class="btn btn-outline-success btn-sm">Comment</button>
@@ -53,12 +52,41 @@
                         <h5 class="">{{ $item->user->name }} - <span
                                 class="text-muted"><i>{{ $item->user->username }}</i></span>
                         </h5>
-                        <p class="p-2 mb-0 rounded" style="background-color: rgba(217, 234, 249, 0.829)">
+                        <p id="main-comment" class="p-2 mb-0 rounded" style="background-color: rgba(217, 234, 249, 0.829)">
                             {{ $item->comment }}
                         </p>
                         @if (Auth::user()->username == $item->user->username)
+                            <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
+                                aria-labelledby="editModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editModalLabel">Edit Comment</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/explore/{{ $post->id }}/{{ $item->id }}/edit"
+                                                method="post">
+                                                @csrf
+                                                <div class="form-floating mb-3">
+                                                    <textarea name="comment" id="comment{{ $item->id }}" class="form-control" required
+                                                        style="height: 60px">{{ $item->comment }}</textarea>
+                                                    <label for="comment{{ $item->id }}"
+                                                        class="form-label">{{ __('Comment') }}</label>
+                                                </div>
+                                                <button type="submit" class="btn btn-outline-success btn-sm">Submit</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="gap-2 d-flex justify-content-end">
-                                <a href="" class="">Edit</a> - <a type="button" data-bs-toggle="modal"
+                                <a type="button" class="edit-link" data-bs-toggle="modal"
+                                    data-bs-target="#editModal{{ $item->id }}">Edit</a> - <a type="button"
+                                    class="delete-link" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal{{ $item->id }}">Delete</a>
                                 <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
                                     aria-labelledby="deleteModalLabel" aria-hidden="true">

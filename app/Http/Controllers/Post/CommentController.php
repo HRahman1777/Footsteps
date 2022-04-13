@@ -28,6 +28,28 @@ class CommentController extends Controller
         return redirect('/explore/' . $pid);
     }
 
+    public function edit(Request $request, $pid, $cid)
+    {
+        $comment = Comment::where('id', $cid)->first();
+        if ($comment && ($comment->user->username == Auth::user()->username)) {
+            if ($comment) {
+                $comment->update([
+                    'comment' => $request->input('comment')
+                ]);
+                $jervis = [
+                    'status' => 'success',
+                    'message' => 'Comment Updated Successfully!'
+                ];
+                return redirect('/explore/' . $pid)->with('jervis', $jervis);
+            }
+        }
+        $jervis = [
+            'status' => 'error',
+            'message' => 'Could not Updated!'
+        ];
+        return redirect('/explore/' . $pid)->with('jervis', $jervis);
+    }
+
     public function deleteComment($pid, $cid)
     {
         $comment = Comment::where('id', $cid)->first();
@@ -45,6 +67,6 @@ class CommentController extends Controller
             'status' => 'error',
             'message' => 'Could not delete!'
         ];
-        return redirect('/explore/' . $pid)->with('jervis', $jervis);;
+        return redirect('/explore/' . $pid)->with('jervis', $jervis);
     }
 }
