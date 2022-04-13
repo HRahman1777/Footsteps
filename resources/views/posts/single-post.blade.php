@@ -6,11 +6,38 @@
             <div class="card bg-light px-4 py-2 mt-3 shadow">
                 <h4 class="mb-0">{{ $post->user->name }}</i></h4>
                 <small>
-                    <p class="text-muted text-sm mt-0">
+                    <p class="text-muted text-sm mt-0 mb-0">
                         @<i>{{ $post->user->username }}</i> -
                         {{ $post->updated_at }}
                     </p>
-                    <h5><b>{{ $post->title }}</b></h5>
+                    @if (Auth::user()->username == $post->user->username)
+                        <div class="gap-2 d-flex">
+                            <a href="" class="edit-link">Edit</a> - <a type="button" class="delete-link"
+                                data-bs-toggle="modal" data-bs-target="#postDeleteModal">Delete</a>
+                            <div class="modal fade" id="postDeleteModal" tabindex="-1"
+                                aria-labelledby="postDeleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="postDeleteModalLabel">Delete Postss</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Delete This Post! Are You Sure ?</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-danger"
+                                                href="/explore/{{ $post->id }}/delete">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <h5 class="mt-1"><b>{{ $post->title }}</b></h5>
                     <div class="gap-2 d-flex">
                         <a href="/explore?catId={{ $post->category->id }}"
                             class="catLink border p-1 rounded">{{ $post->category->name }}</a>
@@ -22,15 +49,15 @@
                 </small>
                 <p>{{ $post->body }}</p>
                 @if ($post->image != null)
-                    <img src="{{ asset('upload/images/' . $post->image) }}" class="mt-1 rounded float-start img-fluid mb-2"
-                        alt="">
+                    <img src="{{ asset('upload/images/' . $post->image) }}"
+                        class="mt-1 rounded float-start img-fluid mb-2" alt="">
                 @endif
             </div>
             <div class="card bg-light px-4 py-2 mt-3 shadow">
                 <h4>Comments</h4>
                 <p>
-                    <a class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                        aria-expanded="false" aria-controls="collapseExample">
+                    <a class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse" href="#collapseExample"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
                         Add Comment
                     </a>
                 </p>

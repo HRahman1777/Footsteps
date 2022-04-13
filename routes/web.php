@@ -22,6 +22,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/home', [PostController::class, 'savePost'])->name('posted');
 Route::get('/explore', [PostController::class, 'allPost'])->name('all.post');
 Route::get('/explore/{id}', [PostController::class, 'singlePost']);
+Route::get('/explore/{id}/delete', [PostController::class, 'delete']);
 
 Route::post('/explore/{id}', [CommentController::class, 'addComment']);
 Route::post('/explore/{pid}/{cid}/edit', [CommentController::class, 'edit']);

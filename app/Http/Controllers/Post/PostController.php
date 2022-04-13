@@ -90,4 +90,24 @@ class PostController extends Controller
         ];
         return redirect('/home')->with('jervis', $jervis);
     }
+
+    public function delete($id)
+    {
+        $post = Post::find($id);
+        if ($post && ($post->user->username == Auth::user()->username)) {
+            $isDelete = $post->delete();
+            if ($isDelete) {
+                $jervis = [
+                    'status' => 'success',
+                    'message' => 'Post Deleted Successfully!'
+                ];
+                return redirect('home')->with('jervis', $jervis);
+            }
+        }
+        $jervis = [
+            'status' => 'error',
+            'message' => 'Could not delete!'
+        ];
+        return redirect('home')->with('jervis', $jervis);
+    }
 }
